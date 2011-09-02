@@ -1,7 +1,7 @@
-<script src="http://172.20.12.45:8081/socket.io/socket.io.js"></script>
+<script src="http://localhost:8081/socket.io/socket.io.js"></script>
 <script language="javascript" type="text/javascript">
 	$(document).ready(function(){
-		var socket = new io.connect('http://172.20.12.45',{port: 8081, rememberTransport: true});									// var socket = io.connect('localhost:8081');
+		var socket = new io.connect('http://localhost',{port: 8081, rememberTransport: true});									// var socket = io.connect('localhost:8081');
 		socket.on('connect', function () {			
 			socket.on('result',function(data) {
 				var product = $.parseJSON(data);
