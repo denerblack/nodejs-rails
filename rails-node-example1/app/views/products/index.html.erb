@@ -1,0 +1,26 @@
+<script src="http://172.20.12.45:8081/socket.io/socket.io.js"></script>
+<script language="javascript" type="text/javascript">
+	$(document).ready(function(){
+		var socket = new io.connect('http://172.20.12.45',{port: 8081, rememberTransport: true});									// var socket = io.connect('localhost:8081');
+		socket.on('connect', function () {			
+			socket.on('result',function(data) {
+				var product = $.parseJSON(data);
+				console.log(product);
+				$('#list_images').append('<img src="/system/images/'+product.product.id+'/medium/'+ product.product.image_file_name+'"></img>')
+
+			});									
+		});
+
+	});
+</script>
+<h1>Listing products</h1>
+
+<div id="list_images">
+	<% @products.each do |product| %>
+	 	<%= image_tag product.image.url(:medium), :title => product.name %>
+		<%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %>
+	<% end %>	 
+</div>
+
+
+<%= link_to 'New Product', new_product_path %>

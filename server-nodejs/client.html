@@ -1,0 +1,28 @@
+<html>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="http://localhost:8081/socket.io/socket.io.js"></script>
+<script language="javascript" type="text/javascript">
+	$(document).ready(function(){
+		// var socket = new WebSocket('ws://localhost:8081');
+		// 
+		// socket.onopen = function(event) {
+		// 	socket.send('Test');
+		// 	socket.onconnect;
+		// 	
+		// };
+		
+		
+		var socket = new io.connect('localhost',{port: 8081, rememberTransport: true});
+		// socket.io.connect();
+								// var socket = io.connect('localhost:8081');
+		socket.on('connect', function () {
+			console.log('Client has connected to the server!');
+			// socket.emit('persist product','<%=@product_json%>');
+										
+		});
+	});
+</script>
+dunha
+</body>
+</html>

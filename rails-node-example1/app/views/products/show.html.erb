@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<!-- <script type="text/javascript" src="node_modules/socket.io/lib/socket.io.js"></script> -->
+
+<script src="http://localhost:8081/socket.io/socket.io.js"></script>
+
+<% if !notice.nil? %>
+	<script language="javascript" type="text/javascript">
+		$(document).ready(function(){
+			var socket = new io.connect('localhost',{port: 8081, rememberTransport: true});									// var socket = io.connect('localhost:8081');
+			socket.on('connect', function () {
+				console.log('Client has connected to the server!');
+				socket.emit('persist','<%=@product_json%>', function(data) {
+					console.log(data);
+				});											
+			});
+		});
+	</script>
+
+<%end%>
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Descript:</b>
+  <%= @product.descript %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

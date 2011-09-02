@@ -1,0 +1,7 @@
+<h1>PathReader#index</h1>
+<script src="http://localhost:3001/socket.io.js"></script>
+<% @images.each do |image|%>
+	<img scr="http://localhost:3000/images/rails.png" style="height: 40;width: 40;"> </img>
+	<%=image_tag("#{image}")%>
+<%end%>
+<p>Find me in app/views/path_reader/index.html.erb</p>
